@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const expressHandlebars = require('express-handlebars');
 const session = require('express-session');
-const RedisStore = require('connect-redis')(session); 
+const RedisStore = require('connect-redis')(session);
 const csrf = require('csurf');
 const url = require('url');
 
@@ -24,13 +24,13 @@ mongoose.connect(dbURL, (err) => {
 });
 
 let redisURL = {
-  hostname: 'redis-16105.c82.us-east-1-2.ec2.cloud.redislabs.com', //my hostname
+  hostname: 'redis-16105.c82.us-east-1-2.ec2.cloud.redislabs.com', // my hostname
   port: 16105, //my port number
 };
 
-let redisPASS = 'nUcDGfsJJdLY04Xz7mSrbRoPempJR5gP'; //my password
+let redisPASS = 'nUcDGfsJJdLY04Xz7mSrbRoPempJR5gP'; // my password
 
-if(process.env.REDISCLOUD_URL){
+if (process.env.REDISCLOUD_URL) {
   redisURL = url.parse(process.env.REDISCLOUD_URL);
   redisPASS = redisURL.auth.split(':')[1];
 }
@@ -53,10 +53,10 @@ app.use(session({
     port: redisURL.port,
     pass: redisPASS,
   }),
-  secret:'Domo Arigato',
+  secret: 'Domo Arigato',
   resave: true,
   saveUninitialized: true,
-  cookie:{
+  cookie: {
     httpOnly: true,
   },
 }));
@@ -65,12 +65,12 @@ app.set('view engine', 'handlebars');
 app.set('views', `${__dirname}/../views`);
 app.use(cookieParser());
 
-//csrf must come after app.use(cookieParser());
-//and app.use(session({.....});
-//should come before the router
+// csrf must come after app.use(cookieParser());
+// and app.use(session({.....});
+// should come before the router
 app.use(csrf());
-app.use((err,req,res,next) => {
-  if(err.code !== 'EBADCSRFTOKEN') return next(err);
+app.use((err, req, res, next) => {
+  if (err.code !== 'EBADCSRFTOKEN') return next(err);
 
   console.log('Missing CSRF token');
   return false;
