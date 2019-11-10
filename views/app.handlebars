@@ -1,7 +1,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
-  <title>DomoMaker</title>
+  <title>MealMaker</title>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <link rel="shortcut icon" href="/assets/img/favicon.png"/>
   <link rel="stylesheet" type="text/css" href="/assets/style.css"/>
@@ -9,24 +9,42 @@
 <body>
   <nav><a href="/login"><img id="logo" src="/assets/img/face.png" alt="face logo"/></a>
     <div class="navlink"><a href="/logout">Log out</a></div>
+    <div class="navlink"><a href="/about">About</a></div>
   </nav>
-  <section id="makeDomo">
-    <form id="domoForm" name="domoForm" action="/maker" method="POST" class="domoForm">
+  <section id="makeMeal">
+    <form id="mealForm" name="mealForm" action="/maker" method="POST" class="domoForm">  
       <label for="name">Name: </label>
-      <input id="domoName" type="text" name="name" placeholder="Domo Name"/>
-      <label for="age">Age: </label>
-      <input id="domoAge" type="text" name="age" placeholder="Domo Age"/>
+      <input id="mealName" type="text" name="name" placeholder="Meal Name"/>
+      <label for="calories">Calories: </label>
+      <input id="mealCalories" type="text" name="calories" placeholder="Meal Calories"/> 
+      <label for="protien">Protien: </label>
+      <input id="mealProtien" type="text" name="protien" placeholder="Meal Protien"/> 
+      <label for="carbs">Carbs: </label>
+      <input id="mealCarbs" type="text" name="carbs" placeholder="Meal Carbs"/> 
+      <label for="fat">Fat: </label>
+      <input id="mealfat" type="text" name="fat" placeholder="Meal Fat"/> 
+      <label for="sodium">Sodium: </label>
+      <input id="mealSodium" type="text" name="sodium" placeholder="Meal Sodium"/> 
+      <label for="Cholesterol">Chol: </label>
+      <input id="mealCholesterol" type="text" name="cholesterol" placeholder="Meal Cholesterol"/> 
       <input type="hidden" name="_csrf" value={{csrfToken}} />
-      <input class="makeDomoSubmit" type="submit" value="Make Domo" />
+      <input class="makeDomoSubmit" type="submit" value="Make Meal" />
     </form>
   </section>
-  <section id="domos">
-    <div class="domo">
-      {{#if domos}}
-        {{#each domos}}
-          <div class="domo"><img src="/assets/img/domoface.jpeg" alt="domo face" class="domoFace"/>
-            <h3 class="domoName">Name: {{this.name}}</h3>
-            <h3 class="domoAge">Age: {{this.age}}</h3>
+  <section id="add1">This will be an add</section>
+  <section id="add2">This will be an add</section>
+  <section id="meals">
+    <div class="meal">
+      {{#if meals}}
+        {{#each meals}}
+          <div class="meal"><img src="/assets/img/domoface.jpeg" alt="domo face" class="domoFace"/>
+            <h3 class="mealName">Name: {{this.name}}</h3>
+            <h3 class="mealCalories">Calories: {{this.calories}}</h3>
+            <h3 class="mealProtien">Protien: {{this.protien}}</h3>
+            <h3 class="mealCarbs">Carbs: {{this.carbs}}</h3>
+            <h3 class="mealFat">Fat: {{this.fat}}</h3>
+            <h3 class="mealSodium">Sodium: {{this.sodium}}</h3>
+            <h3 class="mealCholesterol">Cholesterol: {{this.cholesterol}}</h3>
           </div>
         {{/each}}
       {{/if}}
