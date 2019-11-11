@@ -31,8 +31,38 @@
       <input class="makeDomoSubmit" type="submit" value="Make Meal" />
     </form>
   </section>
-  <section id="add1">This will be an add</section>
-  <section id="add2">This will be an add</section>
+  <section id="removeMeal">
+    <form id="mealForm" name="mealForm" action="/deleter" method="POST" class="domoForm">  
+      <label id="removeMealNameLabel" for="mealName">Meal Name To Remove: </label>
+      <input id="removeMealName" type="text" name="mealName" placeholder="Meal Name"/>
+      {{!-- <input type="hidden" name="_csrf" value={{csrfToken}} /> --}}
+      <input class="removeMealSubmit" type="submit" value="Remove Meal" />
+    </form>
+  </section>
+  <section id="ad1">This will be an add</section>
+  <section id="ad2">This will be an add</section>
+  <section id="recomended">Recomended daily values:</section>
+  <div id="listWrap">
+    <h3>Males (14-50+):</h3>
+    <ul id="maleList">
+      <li>Calories: 3200-2000</li>
+      <li>Protien: 52-56 g</li>
+      <li>Carbs: 130 g</li>
+      <li>Fat: (25-35) - (20-35) % kcal</li>
+      <li>Sodium: 2300</li>
+      <li>Cholesterol: < 200 mg/dl</li>
+    </ul>
+    <h3>Females (14-50+):</h3>
+    <ul id="femaleList">
+      <li>Calories: 1800-1600 </li>
+      <li>Protien: 46-56 g</li>
+      <li>Carbs: 130 g</li>
+      <li>Fat: (25-35) - (20-35) % kcal</li>
+      <li>Sodium: 2300</li>
+      <li>Cholesterol: < 200 mg/dl</li>
+    </ul>
+  </div>
+  
   <section id="meals">
     <div class="meal">
       {{#if meals}}

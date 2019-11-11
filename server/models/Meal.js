@@ -30,34 +30,34 @@ const MealSchema = new mongoose.Schema({
     required: true,
   },
 
-  protien:{
+  protien: {
     type: Number,
     min: 0,
-    required: true, 
+    required: true,
   },
 
-  carbs:{
+  carbs: {
     type: Number,
     min: 0,
-    required: true, 
+    required: true,
   },
 
-  fat:{
+  fat: {
     type: Number,
     min: 0,
-    required: true, 
+    required: true,
   },
 
-  sodium:{
+  sodium: {
     type: Number,
     min: 0,
-    required: true, 
+    required: true,
   },
 
-  cholesterol:{
+  cholesterol: {
     type: Number,
     min: 0,
-    required: true, 
+    required: true,
   },
 
   owner: {
@@ -81,7 +81,7 @@ MealSchema.statics.toAPI = (doc) => ({
   carbs: doc.carbs,
   fat: doc.fat,
   sodium: doc.sodium,
-  cholesterol: doc.cholesterol
+  cholesterol: doc.cholesterol,
 });
 
 MealSchema.statics.findByOwner = (ownerId, callback) => {
@@ -89,18 +89,19 @@ MealSchema.statics.findByOwner = (ownerId, callback) => {
     owner: convertId(ownerId),
   };
 
-//   return MealModel.find(search).select('name brand calories protien carbs fat sodium cholesterol').exec(callback);
-  return MealModel.find(search).select('name calories protien carbs fat sodium cholesterol').exec(callback);
-
+//   return MealModel.find(search)
+// .select('name brand calories protien carbs fat sodium cholesterol').exec(callback);
+  return MealModel.find(search)
+  .select('name calories protien carbs fat sodium cholesterol').exec(callback);
 };
 
 MealSchema.statics.deleteMeal = (mealName/* , callback*/) => {
-    const search = {
-      name: mealName,
-    };
-  
-    return MealModel.deleteOne(search);
+  const search = {
+    name: mealName,
   };
+
+  return MealModel.deleteOne(search);
+};
 
 MealModel = mongoose.model('Meal', MealSchema);
 

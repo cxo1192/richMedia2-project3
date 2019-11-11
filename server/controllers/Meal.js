@@ -14,7 +14,9 @@ const makerPage = (req, res) => {
 };
 
 const makeMeal = (req, res) => {
-  if (!req.body.name || !req.body.calories || !req.body.protien || !req.body.carbs || !req.body.fat || !req.body.sodium || ! req.body.cholesterol) {
+  if (!req.body.name || !req.body.calories || !req.body.protien
+    || !req.body.carbs || !req.body.fat
+    || !req.body.sodium || ! req.body.cholesterol) {
     return res.status(400).json({ error: 'All fields are required' });
   }
 
@@ -47,5 +49,15 @@ const makeMeal = (req, res) => {
   return MealPromise;
 };
 
+// have professor look at this
+const deleteMeal = (req, res) => {
+  if (!req.body.mealName) {
+    return res.status(400).json({ error: 'Enter Meal Name to Remove' });
+  }
+
+  return Meal.MealModel.deleteMeal(req.body.mealName);
+};
+
 module.exports.makerPage = makerPage;
 module.exports.make = makeMeal;
+module.exports.deleteMeal = deleteMeal;

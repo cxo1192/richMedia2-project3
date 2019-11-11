@@ -67,12 +67,31 @@ nav:nth-child(1) {
     color: white;
 }
 
+#removeMealNameLabel {
+    display: inline-block;
+    width: 200px;
+    margin-left: 10px;
+    font-size: 1.2em;
+    float: left;
+    color: white;
+}
+
 .domoForm input[type=text] {
     float:left;
     width: 115px;
 }
 
 .makeDomoSubmit {
+    transition: background-color 0.4s ease;
+    display: inline;
+    width: 90px;
+    background-color: #55acee;
+    border-radius: 2px;
+    color: white;
+    text-decoration: none;
+}
+
+.removeMealSubmit {
     transition: background-color 0.4s ease;
     display: inline;
     width: 90px;
@@ -260,4 +279,20 @@ h3.mealProtien {
 
 .meal:last-child {
     margin-bottom:10px;
+}
+
+#listWrap{
+    width:95%;
+    /* text-align: center; */
+}
+#listWrap h3{
+    float: left;
+}
+
+#femaleList{
+    float: left;
+}
+
+#maleList{
+    float:left;
 }
