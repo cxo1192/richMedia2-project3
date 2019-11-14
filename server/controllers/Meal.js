@@ -57,7 +57,7 @@ const deleteMeal = (req, res) => {
   }
 
   Meal.MealModel.deleteMeal(req.body.removeName, () => {
-    return res.json({message: "deleted successfully"});
+    return res.json({ redirect: '/maker' }); //hmmmm
   });
 };
 

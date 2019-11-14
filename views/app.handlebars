@@ -12,7 +12,7 @@
     <div class="navlink"><a href="/about">About</a></div>
   </nav>
   <section id="makeMeal">
-    <form id="mealForm" name="mealForm" action="/maker" method="POST" class="domoForm">  
+    <form id="mealForm" name="mealForm" action="/maker" method="POST" class="mealForm">  
       <label for="name">Name: </label>
       <input id="mealName" type="text" name="name" placeholder="Meal Name"/>
       <label for="calories">Calories: </label>
@@ -32,7 +32,7 @@
     </form>
   </section>
   <section id="removeMeal">
-    <form id="removeMealForm" name="removeMealForm" action="/deleter" method="POST" class="domoForm">  
+    <form id="removeMealForm" name="removeMealForm" action="/deleter" method="POST" class="removeMealForm">  
       <label id="removeMealNameLabel" for="removeName">Meal Name To Remove: </label>
       <input id="removeMealName" type="text" name="removeName" placeholder="Meal Name"/>
       <input type="hidden" name="_csrf" value={{csrfToken}} />
