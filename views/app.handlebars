@@ -32,9 +32,9 @@
     </form>
   </section>
   <section id="removeMeal">
-    <form id="mealForm" name="mealForm" action="/deleter" method="POST" class="domoForm">  
-      <label id="removeMealNameLabel" for="mealName">Meal Name To Remove: </label>
-      <input id="removeMealName" type="text" name="mealName" placeholder="Meal Name"/>
+    <form id="removeMealForm" name="removeMealForm" action="/deleter" method="POST" class="domoForm">  
+      <label id="removeMealNameLabel" for="removeName">Meal Name To Remove: </label>
+      <input id="removeMealName" type="text" name="removeName" placeholder="Meal Name"/>
       <input type="hidden" name="_csrf" value={{csrfToken}} />
       <input class="removeMealSubmit" type="submit" value="Remove Meal" />
     </form>
