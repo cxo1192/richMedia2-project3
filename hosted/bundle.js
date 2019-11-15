@@ -75,4 +75,19 @@ $(document).ready(function () {
 
     return false;
   });
+
+  $("#removeMealForm").on("submit", function (e) {
+    e.preventDefault();
+
+    $("#domoMessage").animate({ width: 'hide' }, 350);
+
+    if ($("#removeMealName").val() == '') {
+      handleError("Meal Name to Remove is required");
+      return false;
+    }
+
+    sendAjax($("#removeMealForm").attr("action"), $("#removeMealForm").serialize());
+
+    return false;
+  });
 });

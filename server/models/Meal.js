@@ -95,12 +95,12 @@ MealSchema.statics.findByOwner = (ownerId, callback) => {
   .select('name calories protien carbs fat sodium cholesterol').exec(callback);
 };
 
-MealSchema.statics.deleteMeal = (mealName/* , callback*/) => {
+MealSchema.statics.deleteMeal = (mealName, callback) => {
   const search = {
     name: mealName,
   };
 
-  return MealModel.deleteOne(search);
+  return MealModel.deleteOne(search, callback);
 };
 
 MealModel = mongoose.model('Meal', MealSchema);

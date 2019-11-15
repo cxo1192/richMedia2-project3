@@ -7,12 +7,12 @@
   <link rel="stylesheet" type="text/css" href="/assets/style.css"/>
 </head>
 <body>
-  <nav><a href="/login"><img id="logo" src="/assets/img/face.png" alt="face logo"/></a>
+  <nav><a href="/login"><img id="logo" src="/assets/img/bigLemon.png" alt="face logo"/></a>
     <div class="navlink"><a href="/logout">Log out</a></div>
     <div class="navlink"><a href="/about">About</a></div>
   </nav>
   <section id="makeMeal">
-    <form id="mealForm" name="mealForm" action="/maker" method="POST" class="domoForm">  
+    <form id="mealForm" name="mealForm" action="/maker" method="POST" class="mealForm">  
       <label for="name">Name: </label>
       <input id="mealName" type="text" name="name" placeholder="Meal Name"/>
       <label for="calories">Calories: </label>
@@ -32,15 +32,16 @@
     </form>
   </section>
   <section id="removeMeal">
-    <form id="mealForm" name="mealForm" action="/deleter" method="POST" class="domoForm">  
-      <label id="removeMealNameLabel" for="mealName">Meal Name To Remove: </label>
-      <input id="removeMealName" type="text" name="mealName" placeholder="Meal Name"/>
-      {{!-- <input type="hidden" name="_csrf" value={{csrfToken}} /> --}}
+    <form id="removeMealForm" name="removeMealForm" action="/deleter" method="POST" class="removeMealForm">  
+      <label id="removeMealNameLabel" for="removeName">Meal Name To Remove: </label>
+      <input id="removeMealName" type="text" name="removeName" placeholder="Meal Name"/>
+      <input type="hidden" name="_csrf" value={{csrfToken}} />
       <input class="removeMealSubmit" type="submit" value="Remove Meal" />
     </form>
   </section>
-  <section id="ad1">This will be an add</section>
-  <section id="ad2">This will be an add</section>
+  
+  <section class="ad"><img src="/assets/img/ad.png" alt="add 1"/><img src="/assets/img/ad.png" alt="add 2"/></section>
+  
   <section id="recomended">Recomended daily values:</section>
   <div id="listWrap">
     <h3>Males (14-50+):</h3>
@@ -67,7 +68,7 @@
     <div class="meal">
       {{#if meals}}
         {{#each meals}}
-          <div class="meal"><img src="/assets/img/domoface.jpeg" alt="domo face" class="domoFace"/>
+          <div class="meal"><img src="/assets/img/mealSketch.png" alt="meal img" class="mealImg"/>
             <h3 class="mealName">Name: {{this.name}}</h3>
             <h3 class="mealCalories">Calories: {{this.calories}}</h3>
             <h3 class="mealProtien">Protien: {{this.protien}}</h3>
@@ -81,7 +82,7 @@
     </div>
   </section>
   <div id="domoMessage"><img id="speech" src="/assets/img/speech.png" alt="speech box"/>
-    <h3><span id="errorMessage"></span></h3><img id="domo" src="assets/img/domo.png" alt="domo"/>
+    <h3><span id="errorMessage"></span></h3><img id="ron" src="assets/img/bigRon.png" alt="ron"/>
   </div>
   <script src="/assets/bundle.js"></script>
 </body>

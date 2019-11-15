@@ -51,11 +51,14 @@ const makeMeal = (req, res) => {
 
 // have professor look at this
 const deleteMeal = (req, res) => {
-  if (!req.body.mealName) {
+  console.dir(req.body);
+  if (!req.body.removeName) {
     return res.status(400).json({ error: 'Enter Meal Name to Remove' });
   }
 
-  return Meal.MealModel.deleteMeal(req.body.mealName);
+  Meal.MealModel.deleteMeal(req.body.removeName, () => {
+    return res.json({ redirect: '/maker' }); //hmmmm
+  });
 };
 
 module.exports.makerPage = makerPage;
