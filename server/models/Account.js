@@ -82,6 +82,13 @@ AccountModel.findByUsername(username, (err, doc) => {
   });
 });
 
+
+// AccountSchema.statics.changePass = (username, oldPass, newPass, callback) => {
+//   let check = AccountModel.authenticate(username, oldPass, callback);
+
+//   let newData = AccountModel.generateHash(newPass,callback);
+// };
+
 AccountModel = mongoose.model('Account', AccountSchema);
 
 module.exports.AccountModel = AccountModel;
