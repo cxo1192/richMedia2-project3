@@ -35,7 +35,7 @@ nav:nth-child(1) {
 }
 
 .navlink a, .navlink a:link, .navlink a:visited, .navlink a:hover, .navlink a:active {
-    color: 776D5A;
+    color:#CCDAD1;
     text-decoration: none;
     padding: 5px;
     border-radius: 4px;
@@ -45,7 +45,7 @@ nav:nth-child(1) {
 
 .navlink a:hover {
     transition: background-color 0.8s ease;
-    background-color: #66bdff;
+    background-color: #776D5A;
 }
 
 .mealForm {
@@ -65,7 +65,7 @@ nav:nth-child(1) {
     margin-left: 10px;
     font-size: 1.2em;
     float: left;
-    color: White;
+    color: #CCDAD1;
 }
 
 .mealForm input[type=text] {
@@ -91,7 +91,7 @@ nav:nth-child(1) {
     margin-left: 10px;
     font-size: 1.2em;
     float: left;
-    color: White;
+    color: #CCDAD1;
 }
 
 
@@ -106,7 +106,7 @@ nav:nth-child(1) {
     width: 90px;
     background-color: #4FB477;
     border-radius: 2px;
-    color: White;
+    color: #CCDAD1;
     text-decoration: none;
 }
 
@@ -116,12 +116,12 @@ nav:nth-child(1) {
     width: 110px;
     background-color: #4FB477;
     border-radius: 2px;
-    color: White;
+    color: #CCDAD1;
     text-decoration: none;
 }
 
 .makeDomoSubmit:link, .makeDomoSubmit:visited, .makeDomoSubmit:hover, .makeDomoSubmit:active {
-    color: White;
+    color: #CCDAD1;
 }
 
 .makeDomoSubmit:hover {
@@ -161,12 +161,12 @@ nav:nth-child(1) {
     border-radius: 2px;
     border-color: #66acee;
     padding: 3px 0px;
-    color: White;
+    color: #CCDAD1;
     text-decoration: none;
 }
 
 .formSubmit:link, .formSubmit:visited, .formSubmit:hover, .formSubmit:active {
-    color: White;
+    color: #CCDAD1;
 }
 
 .formSubmit:hover {
@@ -217,7 +217,7 @@ nav:nth-child(1) {
     font-style: italic;
 }
 
-#domo {
+#ron {
     z-index: 225;
     margin-top: -20px;
     margin-left: 135px;
@@ -234,7 +234,7 @@ nav:nth-child(1) {
     border: 2px solid #4FB477;
     border-radius: 4px;
     margin: 0 auto;
-    margin-top: 100px;
+    margin-top: 200px;
 }
 
 .meal {
@@ -254,10 +254,10 @@ nav:nth-child(1) {
     transition: border-color 0.2s ease-out;
     border-color: rgba(255,255,255, 0.8);
     transition: background-color 2.6s ease-out;
-    background-color: #66bfff;
+    background-color: #776D5A;
 }
 
-img.domoFace {
+img.mealImg {
     margin-left: 25px;
     margin-right: 10px;
     height: 50px;
