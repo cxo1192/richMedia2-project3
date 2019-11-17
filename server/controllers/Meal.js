@@ -56,9 +56,8 @@ const deleteMeal = (req, res) => {
     return res.status(400).json({ error: 'Enter Meal Name to Remove' });
   }
 
-  Meal.MealModel.deleteMeal(req.body.removeName, () => {
-    return res.json({ redirect: '/maker' }); //hmmmm
-  });
+  return Meal.MealModel.deleteMeal(req.body.removeName,
+    () => res.json({ redirect: '/maker' })); // hmm
 };
 
 module.exports.makerPage = makerPage;
