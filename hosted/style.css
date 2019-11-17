@@ -100,7 +100,7 @@ nav:nth-child(1) {
     width: 115px;
 }
 
-.makeDomoSubmit {
+.makeMealSubmit {
     transition: background-color 0.4s ease;
     display: inline;
     width: 90px;
@@ -120,11 +120,11 @@ nav:nth-child(1) {
     text-decoration: none;
 }
 
-.makeDomoSubmit:link, .makeDomoSubmit:visited, .makeDomoSubmit:hover, .makeDomoSubmit:active {
+.makeMealSubmit:link, .makeMealSubmit:visited, .makeMealSubmit:hover, .makeMealSubmit:active {
     color: #CCDAD1;
 }
 
-.makeDomoSubmit:hover {
+.makeMealSubmit:hover {
     transition: background-color 0.4s ease;
     background-color: #CCDAD1;
 }
@@ -190,7 +190,7 @@ nav:nth-child(1) {
     box-shadow: 0px 0px 1px 1px #4FB477;
 }
 
-#domoMessage {
+#ronMessage {
     display:none;
     top: 250px;
     width: 250px;
@@ -201,7 +201,7 @@ nav:nth-child(1) {
     overflow: hidden;
 }
 
-#domoMessage h3 {
+#ronMessage h3 {
     width: 200px;
     position: absolute;
     top: 0px;
@@ -271,7 +271,7 @@ img.mealImg {
     float:left;
 }
 
-h3.emptyDomo {
+h3.emptyMeal {
     width: 400px;
     font-size: 1.5em;
     margin: 0 auto;
