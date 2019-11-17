@@ -44,6 +44,27 @@ $(document).ready(() => {
     return false;
   });
 
+
+  $("#changePassForm").on("submit", (e) => {
+    e.preventDefault();
+
+    $("#domoMessage").animate({width:'hide'},350);
+
+    if($("#user").val() == '' || $("#oldPass").val() == '' || $("#newPass").val() == '') {
+      handleError("All fields are required");
+      return false;
+    }
+
+    // if($("#pass").val() !== $("#pass2").val()) {
+    //   handleError("RAWR! Passwords do not match");
+    //   return false;           
+    // }
+
+    sendAjax($("#changePassForm").attr("action"), $("#changePassForm").serialize());
+
+    return false;
+  });
+
   $("#loginForm").on("submit", (e) => {
     e.preventDefault();
 

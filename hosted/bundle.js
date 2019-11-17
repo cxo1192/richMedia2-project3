@@ -1,93 +1,113 @@
 "use strict";
 
 var handleError = function handleError(message) {
-  $("#errorMessage").text(message);
-  $("#domoMessage").animate({ width: 'toggle' }, 350);
+    $("#errorMessage").text(message);
+    $("#domoMessage").animate({ width: 'toggle' }, 350);
 };
 
 var sendAjax = function sendAjax(action, data) {
-  $.ajax({
-    cache: false,
-    type: "POST",
-    url: action,
-    data: data,
-    dataType: "json",
-    success: function success(result, status, xhr) {
-      $("#domoMessage").animate({ width: 'hide' }, 350);
+    $.ajax({
+        cache: false,
+        type: "POST",
+        url: action,
+        data: data,
+        dataType: "json",
+        success: function success(result, status, xhr) {
+            $("#domoMessage").animate({ width: 'hide' }, 350);
 
-      window.location = result.redirect;
-    },
-    error: function error(xhr, status, _error) {
-      var messageObj = JSON.parse(xhr.responseText);
+            window.location = result.redirect;
+        },
+        error: function error(xhr, status, _error) {
+            var messageObj = JSON.parse(xhr.responseText);
 
-      handleError(messageObj.error);
-    }
-  });
+            handleError(messageObj.error);
+        }
+    });
 };
 
 $(document).ready(function () {
-  $("#signupForm").on("submit", function (e) {
-    e.preventDefault();
+    $("#signupForm").on("submit", function (e) {
+        e.preventDefault();
 
-    $("#domoMessage").animate({ width: 'hide' }, 350);
+        $("#domoMessage").animate({ width: 'hide' }, 350);
 
-    if ($("#user").val() == '' || $("#pass").val() == '' || $("#pass2").val() == '') {
-      handleError("RAWR! All fields are required");
-      return false;
-    }
+        if ($("#user").val() == '' || $("#pass").val() == '' || $("#pass2").val() == '') {
+            handleError("RAWR! All fields are required");
+            return false;
+        }
 
-    if ($("#pass").val() !== $("#pass2").val()) {
-      handleError("RAWR! Passwords do not match");
-      return false;
-    }
+        if ($("#pass").val() !== $("#pass2").val()) {
+            handleError("RAWR! Passwords do not match");
+            return false;
+        }
 
-    sendAjax($("#signupForm").attr("action"), $("#signupForm").serialize());
+        sendAjax($("#signupForm").attr("action"), $("#signupForm").serialize());
 
-    return false;
-  });
+        return false;
+    });
 
-  $("#loginForm").on("submit", function (e) {
-    e.preventDefault();
+    $("#changePassForm").on("submit", function (e) {
+        e.preventDefault();
 
-    $("#domoMessage").animate({ width: 'hide' }, 350);
+        $("#domoMessage").animate({ width: 'hide' }, 350);
 
-    if ($("#user").val() == '' || $("#pass").val() == '') {
-      handleError("RAWR! Username or password is empty");
-      return false;
-    }
+        if ($("#user").val() == '' || $("#oldPass").val() == '' || $("#newPass").val() == '') {
+            handleError("All fields are required");
+            return false;
+        }
 
-    sendAjax($("#loginForm").attr("action"), $("#loginForm").serialize());
+        // if($("#pass").val() !== $("#pass2").val()) {
+        //   handleError("RAWR! Passwords do not match");
+        //   return false;           
+        // }
 
-    return false;
-  });
+        sendAjax($("#changePassForm").attr("action"), $("#changePassForm").serialize());
 
-  $("#mealForm").on("submit", function (e) {
-    e.preventDefault();
+        return false;
+    });
 
-    $("#domoMessage").animate({ width: 'hide' }, 350);
+    $("#loginForm").on("submit", function (e) {
+        e.preventDefault();
 
-    if ($("#mealName").val() == '' || $("#mealCalories").val() == '' || $("#mealProtien").val() == '' || $("#mealCarbs").val() == '' || $("#mealfat").val() == '' || $("#mealSodium").val() == '' || $("#mealCholesterol").val() == '') {
-      handleError("All fields are required");
-      return false;
-    }
+        $("#domoMessage").animate({ width: 'hide' }, 350);
 
-    sendAjax($("#mealForm").attr("action"), $("#mealForm").serialize());
+        if ($("#user").val() == '' || $("#pass").val() == '') {
+            handleError("RAWR! Username or password is empty");
+            return false;
+        }
 
-    return false;
-  });
+        sendAjax($("#loginForm").attr("action"), $("#loginForm").serialize());
 
-  $("#removeMealForm").on("submit", function (e) {
-    e.preventDefault();
+        return false;
+    });
 
-    $("#domoMessage").animate({ width: 'hide' }, 350);
+    $("#mealForm").on("submit", function (e) {
+        e.preventDefault();
 
-    if ($("#removeMealName").val() == '') {
-      handleError("Meal Name to Remove is required");
-      return false;
-    }
+        $("#domoMessage").animate({ width: 'hide' }, 350);
 
-    sendAjax($("#removeMealForm").attr("action"), $("#removeMealForm").serialize());
+        if ($("#mealName").val() == '' || $("#mealCalories").val() == '' || $("#mealProtien").val() == '' || $("#mealCarbs").val() == '' || $("#mealfat").val() == '' || $("#mealSodium").val() == '' || $("#mealCholesterol").val() == '') {
+            handleError("All fields are required");
+            return false;
+        }
 
-    return false;
-  });
+        sendAjax($("#mealForm").attr("action"), $("#mealForm").serialize());
+
+        return false;
+    });
+
+    $("#removeMealForm").on("submit", function (e) {
+        e.preventDefault();
+
+        $("#domoMessage").animate({ width: 'hide' }, 350);
+
+        if ($("#removeMealName").val() == '') {
+            handleError("Meal Name to Remove is required");
+            return false;
+        }
+
+        sendAjax($("#removeMealForm").attr("action"), $("#removeMealForm").serialize());
+
+        return false;
+    });
 });
