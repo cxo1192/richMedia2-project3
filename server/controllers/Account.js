@@ -120,6 +120,7 @@ const changePass = (request, response) => {
 
       const newAccount = account;
       newAccount.password = hash;
+      newAccount.salt = salt;
 
       const savePromise = newAccount.save();
 
@@ -128,8 +129,8 @@ const changePass = (request, response) => {
         return res.json({ redirect: '/maker' });
       });
 
-      savePromise.catch((err) => {
-        console.log(err);
+      savePromise.catch((error) => {
+        console.log(error);
 
         // if (err.code === 11000) {
         //   return res.status(400).json({ error: 'Username already in use.' });
