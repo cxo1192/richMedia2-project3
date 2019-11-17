@@ -276,6 +276,11 @@ img.mealImg {
     float:left;
 }
 
+#whoops{
+    text-align: center;
+    margin-left: 5px;
+}
+
 h3.emptyMeal {
     width: 400px;
     font-size: 1.5em;
@@ -310,6 +315,22 @@ h3.mealProtien {
 }
 
 #aboutInfo p{
+    text-align: left;
+    font-size: 2em;
+    width: 80%;
+    margin:auto;
+    margin-bottom: 2em;
+}
+
+#whoopsInfo{
+    text-align: center;
+}
+
+#whoopsInfo h1{
+    font-size: 3em;
+}
+
+#whoopsInfo p{
     text-align: left;
     font-size: 2em;
     width: 80%;

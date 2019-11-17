@@ -14,6 +14,7 @@ const router = (app) => {
   app.post('/maker', mid.requiresLogin, controllers.Meal.make); // changed for meal
   app.post('/deleter', mid.requiresLogin, controllers.Meal.deleteMeal); // needs work
   app.get('/', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
+  app.get('/*', mid.requiresSecure, controllers.Account.whoopsPage);
 };
 
 module.exports = router;

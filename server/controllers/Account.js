@@ -15,6 +15,8 @@ const changePassPage = (req, res) => {
 
 const aboutPage = (req, res) => res.render('about', { csrfToken: req.csrfToken() });
 
+const whoopsPage = (req, res) => res.render('whoops', { csrfToken: req.csrfToken() });
+
 const logout = (req, res) => {
   req.session.destroy();
   res.redirect('/');
@@ -150,3 +152,4 @@ module.exports.signup = signup;
 module.exports.aboutPage = aboutPage;
 module.exports.changePassPage = changePassPage;
 module.exports.changePass = changePass;
+module.exports.whoopsPage = whoopsPage;
