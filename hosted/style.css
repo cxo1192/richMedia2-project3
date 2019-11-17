@@ -105,9 +105,10 @@ nav:nth-child(1) {
     display: inline;
     width: 90px;
     background-color: #4FB477;
-    border-radius: 2px;
+    border-radius: 40px;
     color: #CCDAD1;
     text-decoration: none;
+    margin-left: 5px;
 }
 
 .removeMealSubmit {
@@ -115,13 +116,15 @@ nav:nth-child(1) {
     display: inline;
     width: 110px;
     background-color: #4FB477;
-    border-radius: 2px;
+    border-radius: 40px;
     color: #CCDAD1;
     text-decoration: none;
+    margin-left: 5px;
 }
 
-.makeMealSubmit:link, .makeMealSubmit:visited, .makeMealSubmit:hover, .makeMealSubmit:active {
-    color: #CCDAD1;
+.makeMealSubmit:link, .makeMealSubmit:visited, .makeMealSubmit:hover, .makeMealSubmit:active, .removeMealSubmit:link,  .removeMealSubmit:visited,  .removeMealSubmit:hover,  .removeMealSubmit:active {
+    background-color: #CCDAD1;
+    color: #4FB477; 
 }
 
 .makeMealSubmit:hover {
@@ -158,11 +161,12 @@ nav:nth-child(1) {
     font-size: 1.2em;
     width: 100px;
     background-color: #4FB477;
-    border-radius: 2px;
+    border-radius: 40px;
     border-color: #66acee;
     padding: 3px 0px;
     color: #CCDAD1;
     text-decoration: none;
+    margin-left: 5px;
 }
 
 #changePassSubmit{
@@ -175,6 +179,7 @@ nav:nth-child(1) {
 
 .formSubmit:hover {
     transition: background-color 0.4s ease;
+    color:#4FB477; 
     background-color: #CCDAD1;
 }
 
@@ -296,6 +301,25 @@ h3.mealProtien {
     font-size: 1.5em;
 }
 
+#aboutInfo{
+    text-align: center;
+}
+
+#aboutInfo h1{
+    font-size: 3em;
+}
+
+#aboutInfo p{
+    text-align: left;
+    font-size: 2em;
+    width: 80%;
+    margin:auto;
+    margin-bottom: 2em;
+}
+
+.ad{
+    margin-left: 20px;
+}
 .meal:first-child {
     margin-top: 10px;
 }
@@ -318,4 +342,20 @@ h3.mealProtien {
 
 #maleList{
     float:left;
+}
+
+a:link{
+    color: #4FB477;  
+}
+
+a:visited{
+    color: #4FB477;
+}
+
+a:hover {
+    color: white;
+}
+  
+a:active {
+    color: black;
 }

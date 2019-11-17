@@ -56,11 +56,6 @@ $(document).ready(function () {
             return false;
         }
 
-        // if($("#pass").val() !== $("#pass2").val()) {
-        //   handleError("RAWR! Passwords do not match");
-        //   return false;           
-        // }
-
         sendAjax($("#changePassForm").attr("action"), $("#changePassForm").serialize());
 
         return false;
