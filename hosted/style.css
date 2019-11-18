@@ -19,6 +19,7 @@ nav {
     width: 100%;
     height: 50px;
     background-color: #4FB477;
+    font-family: 'Bree Serif', serif;
 }
 
 nav:nth-child(1) {
@@ -51,17 +52,18 @@ nav:nth-child(1) {
 .mealForm {
     border: 2px solid #CCDAD1;
     height: 35px;
-    width: 1550px;
+    width: 1575px;
     margin-top:0px;
     padding-top:10px;
     background-color: #4FB477;
     border-bottom-right-radius: 4px;
     border-top-right-radius: 4px;
+    font-family: 'Bree Serif', serif;
 }
 
 .mealForm label {
     display: inline-block;
-    width: 70px;
+    width: 80px;
     margin-left: 10px;
     font-size: 1.2em;
     float: left;
@@ -71,6 +73,7 @@ nav:nth-child(1) {
 .mealForm input[type=text] {
     float:left;
     width: 115px;
+    margin-top: 4px;
 }
 
 
@@ -83,6 +86,7 @@ nav:nth-child(1) {
     background-color: #4FB477;
     border-bottom-right-radius: 4px;
     border-top-right-radius: 4px;
+    font-family: 'Bree Serif', serif;
 }
 
 .removeMealForm label {
@@ -92,12 +96,14 @@ nav:nth-child(1) {
     font-size: 1.2em;
     float: left;
     color: #CCDAD1;
+    
 }
 
 
 .removeMealForm input[type=text] {
     float:left;
     width: 115px;
+    margin-top: 4px;
 }
 
 .makeMealSubmit {
@@ -108,7 +114,17 @@ nav:nth-child(1) {
     border-radius: 40px;
     color: #CCDAD1;
     text-decoration: none;
-    margin-left: 5px;
+    margin-top: 4px;
+    margin-left: 10px;
+}
+
+#recomended{
+    font-family: 'Bree Serif', serif;
+    font-size: 1.5em;
+}
+
+#listWrap{
+    font-family: 'Bree Serif', serif;
 }
 
 .removeMealSubmit {
@@ -119,6 +135,7 @@ nav:nth-child(1) {
     border-radius: 40px;
     color: #CCDAD1;
     text-decoration: none;
+    margin-top: 4px;
     margin-left: 5px;
 }
 
@@ -138,6 +155,7 @@ nav:nth-child(1) {
     margin: 0 auto;
     padding-top: 350px;
     font-size: 1.2em;
+    font-family: 'Bree Serif', serif;
 }
 
 .mainForm h3 {
@@ -257,6 +275,7 @@ nav:nth-child(1) {
     padding: 10px;
     min-height:60px;
     overflow: hidden;
+    font-family: 'Bree Serif', serif;
 }
 
 .meal:hover {
@@ -308,6 +327,7 @@ h3.mealProtien {
 
 #aboutInfo{
     text-align: center;
+    font-family: 'Bree Serif', serif;
 }
 
 #aboutInfo h1{
@@ -324,6 +344,7 @@ h3.mealProtien {
 
 #whoopsInfo{
     text-align: center;
+    font-family: 'Bree Serif', serif;
 }
 
 #whoopsInfo h1{
