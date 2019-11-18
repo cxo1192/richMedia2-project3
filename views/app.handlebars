@@ -45,7 +45,7 @@
   
   <section id="recomended">Recomended daily values:</section>
   <div id="listWrap">
-    <h3>Males (14-50+):</h3>
+    <h3 id="mas">Males (14-50+):</h3>
     <ul id="maleList">
       <li>Calories: 3200-2000</li>
       <li>Protien: 52-56 g</li>
@@ -54,7 +54,6 @@
       <li>Sodium: 2300</li>
       <li>Cholesterol: < 200 mg/dl</li>
     </ul>
-    <h3>Females (14-50+):</h3> 
     <ul id="femaleList">
       <li>Calories: 1800-1600 </li>
       <li>Protien: 46-56 g</li>
@@ -63,20 +62,29 @@
       <li>Sodium: 2300</li>
       <li>Cholesterol: < 200 mg/dl</li>
     </ul>
+    <h3 id="fem">Females (14-50+):</h3> 
   </div>
   
-  <section id="meals">
-    <div class="meal">
+  <section id="mealsBox">
+    <div class="meals">
       {{#if meals}}
         {{#each meals}}
           <div class="meal"><img src="/assets/img/mealSketch.png" alt="meal img" class="mealImg"/>
             <h3 class="mealName">Name: {{this.name}}</h3>
-            <h3 class="mealCalories">Calories: {{this.calories}}</h3>
+            <ul class='mealFacts'>
+              <li>Calories: {{this.calories}}</li>
+              <li>Protein: {{this.protien}}</li>
+              <li>Carbs: {{this.carbs}}</li>
+              <li>Fat: {{this.fat}}</li>
+              <li>Sodium: {{this.sodium}}</li>
+              <li>Cholesterol: {{this.cholesterol}}</li>
+            </ul>
+            {{!-- <h3 class="mealCalories">Calories: {{this.calories}}</h3>
             <h3 class="mealProtien">Protien: {{this.protien}}</h3>
             <h3 class="mealCarbs">Carbs: {{this.carbs}}</h3>
             <h3 class="mealFat">Fat: {{this.fat}}</h3>
             <h3 class="mealSodium">Sodium: {{this.sodium}}</h3>
-            <h3 class="mealCholesterol">Cholesterol: {{this.cholesterol}}</h3>
+            <h3 class="mealCholesterol">Cholesterol: {{this.cholesterol}}</h3> --}}
           </div>
         {{/each}}
       {{/if}}

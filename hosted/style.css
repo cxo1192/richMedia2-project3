@@ -30,7 +30,7 @@ nav:nth-child(1) {
     padding: 5px;
     padding-top: 12px;
     padding-left: 20px;
-    color: 776D5A;
+    color: #776D5A;
     font-size: 1.3em;
     float: left;
 }
@@ -55,6 +55,7 @@ nav:nth-child(1) {
     width: 1575px;
     margin-top:0px;
     padding-top:10px;
+    margin-bottom: 1px;
     background-color: #4FB477;
     border-bottom-right-radius: 4px;
     border-top-right-radius: 4px;
@@ -114,17 +115,14 @@ nav:nth-child(1) {
     border-radius: 40px;
     color: #CCDAD1;
     text-decoration: none;
-    margin-top: 4px;
     margin-left: 10px;
+    font-family: 'Bree Serif', serif;
+    padding-bottom: 4px;
 }
 
 #recomended{
     font-family: 'Bree Serif', serif;
     font-size: 1.5em;
-}
-
-#listWrap{
-    font-family: 'Bree Serif', serif;
 }
 
 .removeMealSubmit {
@@ -135,8 +133,9 @@ nav:nth-child(1) {
     border-radius: 40px;
     color: #CCDAD1;
     text-decoration: none;
-    margin-top: 4px;
     margin-left: 5px;
+    font-family: 'Bree Serif', serif;
+    padding-bottom: 4px;
 }
 
 .makeMealSubmit:link, .makeMealSubmit:visited, .makeMealSubmit:hover, .makeMealSubmit:active, .removeMealSubmit:link,  .removeMealSubmit:visited,  .removeMealSubmit:hover,  .removeMealSubmit:active {
@@ -184,7 +183,7 @@ nav:nth-child(1) {
     padding: 3px 0px;
     color: #CCDAD1;
     text-decoration: none;
-    margin-left: 5px;
+    /* margin-left: 5px; */
 }
 
 #changePassSubmit{
@@ -282,16 +281,17 @@ nav:nth-child(1) {
     transition: border-color 0.2s ease-out;
     border-color: rgba(255,255,255, 0.8);
     transition: background-color 2.6s ease-out;
-    background-color: #776D5A;
+    background-color: white;
+    color:#4FB477;
 }
 
 img.mealImg {
-    margin-left: 25px;
+    margin-left: 45px;
     margin-right: 10px;
     height: 50px;
     width: 50px;
     border-radius: 4px;
-    margin-top:10px;
+    margin-top:50px;
     float:left;
 }
 
@@ -310,19 +310,17 @@ h3.emptyMeal {
 
 h3.mealName {
     float:left;
-    width: 200px;
+    width: 400px;
     font-weight: bold;
     padding-left: 65px;
-    font-size: 1.5em;
+    margin-left: 20px;
+    margin-top: 50px;
+    font-size: 3em;
 }
 
-h3.mealProtien {
-    float:right;
-    text-align: left;
-    width: 100px;
-    font-weight: bold;
-    padding-right: 40px;
-    font-size: 1.5em;
+.mealFacts{
+    float: right;
+    margin-right: 140px;
 }
 
 #aboutInfo{
@@ -360,7 +358,7 @@ h3.mealProtien {
 }
 
 .ad{
-    margin-left: 20px;
+    margin-left: 460px;
 }
 .meal:first-child {
     margin-top: 10px;
@@ -372,15 +370,23 @@ h3.mealProtien {
 
 #listWrap{
     width:95%;
-    /* text-align: center; */
-}
-#listWrap h3{
-    float: left;
+    font-family: 'Bree Serif', serif;
 }
 
 #femaleList{
-    float: left;
+    float: right;
 }
+
+#fem{
+    float: right;
+}
+
+#mas{
+    float: left;
+    margin-left: 2em;
+}
+
+
 
 #maleList{
     float:left;
@@ -401,3 +407,4 @@ a:hover {
 a:active {
     color: black;
 }
+
