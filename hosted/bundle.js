@@ -1,10 +1,12 @@
 "use strict";
 
+//shows error message in ronald mcdonald text bubble
 var handleError = function handleError(message) {
     $("#errorMessage").text(message);
     $("#ronMessage").animate({ width: 'toggle' }, 350);
 };
 
+//sends requests
 var sendAjax = function sendAjax(action, data) {
     $.ajax({
         cache: false,
@@ -25,6 +27,7 @@ var sendAjax = function sendAjax(action, data) {
     });
 };
 
+//sets up on submit buttons to function appropriatly
 $(document).ready(function () {
     $("#signupForm").on("submit", function (e) {
         e.preventDefault();

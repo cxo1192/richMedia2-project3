@@ -9,20 +9,16 @@ let MealModel = {};
 const convertId = mongoose.Types.ObjectId;
 const setName = (name) => _.escape(name).trim();
 
+// create the blueprint of a meal
 const MealSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
     trim: true,
     set: setName,
+    // unique so meals can be search by name
     unique: true,
   },
-
-//   brand: {
-//     type: String,
-//     required: false,
-//     trim: true,
-//   },
 
   calories: {
     type: Number,
@@ -84,17 +80,17 @@ MealSchema.statics.toAPI = (doc) => ({
   cholesterol: doc.cholesterol,
 });
 
+// find meal based on account owner
 MealSchema.statics.findByOwner = (ownerId, callback) => {
   const search = {
     owner: convertId(ownerId),
   };
 
-//   return MealModel.find(search)
-// .select('name brand calories protien carbs fat sodium cholesterol').exec(callback);
   return MealModel.find(search)
   .select('name calories protien carbs fat sodium cholesterol').exec(callback);
 };
 
+// delete meal from database based on meal name
 MealSchema.statics.deleteMeal = (mealName, callback) => {
   const search = {
     name: mealName,
@@ -105,5 +101,6 @@ MealSchema.statics.deleteMeal = (mealName, callback) => {
 
 MealModel = mongoose.model('Meal', MealSchema);
 
+// exports functions
 module.exports.MealModel = MealModel;
 module.exports.MealSchema = MealSchema;

@@ -8,6 +8,7 @@ const iterations = 10000;
 const saltLength = 64;
 const keyLength = 64;
 
+// account blueprint
 const AccountSchema = new mongoose.Schema({
   username: {
     type: String,
@@ -36,6 +37,7 @@ AccountSchema.statics.toAPI = doc => ({
   _id: doc._id,
 });
 
+// confirms password is acceptable
 const validatePassword = (doc, password, callback) => {
   const pass = doc.password;
 
@@ -47,6 +49,7 @@ const validatePassword = (doc, password, callback) => {
   });
 };
 
+// finds account in database based on username
 AccountSchema.statics.findByUsername = (name, callback) => {
   const search = {
     username: name,
@@ -55,6 +58,7 @@ AccountSchema.statics.findByUsername = (name, callback) => {
   return AccountModel.findOne(search, callback);
 };
 
+// used for generating component of secure passwords
 AccountSchema.statics.generateHash = (password, callback) => {
   const salt = crypto.randomBytes(saltLength);
 
@@ -63,6 +67,7 @@ AccountSchema.statics.generateHash = (password, callback) => {
   );
 };
 
+// confirms username and password is correct
 AccountSchema.statics.authenticate = (username, password, callback) =>
 AccountModel.findByUsername(username, (err, doc) => {
   if (err) {
@@ -83,13 +88,8 @@ AccountModel.findByUsername(username, (err, doc) => {
 });
 
 
-// AccountSchema.statics.changePass = (username, oldPass, newPass, callback) => {
-//   let check = AccountModel.authenticate(username, oldPass, callback);
-
-//   let newData = AccountModel.generateHash(newPass,callback);
-// };
-
 AccountModel = mongoose.model('Account', AccountSchema);
 
+// exports functions
 module.exports.AccountModel = AccountModel;
 module.exports.AccountSchema = AccountSchema;

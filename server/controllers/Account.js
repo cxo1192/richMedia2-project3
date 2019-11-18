@@ -1,27 +1,34 @@
 const models = require('../models');
 const Account = models.Account;
 
+// displays login page
 const loginPage = (req, res) => {
   res.render('login', { csrfToken: req.csrfToken() });
 };
 
+// displays signup page
 const signupPage = (req, res) => {
   res.render('signup', { csrfToken: req.csrfToken() });
 };
 
+// displays change password page
 const changePassPage = (req, res) => {
   res.render('changePass', { csrfToken: req.csrfToken() });
 };
 
+// displays about page
 const aboutPage = (req, res) => res.render('about', { csrfToken: req.csrfToken() });
 
+// displays 404 error page
 const whoopsPage = (req, res) => res.render('whoops', { csrfToken: req.csrfToken() });
 
+// ends session and redirects to login page
 const logout = (req, res) => {
   req.session.destroy();
   res.redirect('/');
 };
 
+// handles login request, authenticates and then redirects to app page
 const login = (request, response) => {
   const req = request;
   const res = response;
@@ -45,6 +52,7 @@ const login = (request, response) => {
   });
 };
 
+// validates username and password, creates account and then redirects to app page
 const signup = (request, response) => {
   const req = request;
   const res = response;
@@ -90,7 +98,7 @@ const signup = (request, response) => {
   });
 };
 
-
+// validates user input authenticates user, updates password and then redirects
 const changePass = (request, response) => {
   const req = request;
   const res = response;
@@ -144,6 +152,7 @@ const changePass = (request, response) => {
   });
 };
 
+// exports all functions
 module.exports.loginPage = loginPage;
 module.exports.login = login;
 module.exports.logout = logout;

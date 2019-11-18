@@ -1,8 +1,10 @@
+//shows error message in ronald mcdonald text bubble
 const handleError = (message) => {
   $("#errorMessage").text(message);
   $("#ronMessage").animate({width:'toggle'},350);
 }
 
+//sends requests
 const sendAjax = (action, data) => {
   $.ajax({
     cache: false,
@@ -23,6 +25,7 @@ const sendAjax = (action, data) => {
   });        
 }
 
+//sets up on submit buttons to function appropriatly
 $(document).ready(() => {
   $("#signupForm").on("submit", (e) => {
     e.preventDefault();
