@@ -51,6 +51,21 @@ const makeMeal = (req, res) => {
   return MealPromise;
 };
 
+//find meal by owner
+const getMeal = (request, response) => {
+  const req = request;
+  const res = response;
+
+  return Meal.MealModel.findByOwner(req.session.account._id, (err, docs) => {
+    if (err) {
+      console.log(err);
+      return res.status(400).json({ error: 'An error occurred' });
+    }
+
+    return res.json({ meals: docs });
+  });
+};
+
 // function to delete specific meal from the database
 const deleteMeal = (req, res) => {
   console.dir(req.body);
@@ -64,5 +79,6 @@ const deleteMeal = (req, res) => {
 
 // exports these functions
 module.exports.makerPage = makerPage;
+module.exports.getMeal = getMeal;
 module.exports.make = makeMeal;
 module.exports.deleteMeal = deleteMeal;

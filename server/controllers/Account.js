@@ -7,9 +7,9 @@ const loginPage = (req, res) => {
 };
 
 // displays signup page
-const signupPage = (req, res) => {
-  res.render('signup', { csrfToken: req.csrfToken() });
-};
+// const signupPage = (req, res) => {   //need to remove for react
+//   res.render('signup', { csrfToken: req.csrfToken() });
+// };
 
 // displays change password page
 const changePassPage = (req, res) => {
@@ -152,6 +152,18 @@ const changePass = (request, response) => {
   });
 };
 
+//added  for react
+const getToken = (request, response) => {
+  const req = request;
+  const res = response;
+
+  const csrfJSON = {
+    csrfToken: req.csrfToken(),
+  };
+
+  res.json(csrfJSON);
+};
+
 // exports all functions
 module.exports.loginPage = loginPage;
 module.exports.login = login;
@@ -162,3 +174,4 @@ module.exports.aboutPage = aboutPage;
 module.exports.changePassPage = changePassPage;
 module.exports.changePass = changePass;
 module.exports.whoopsPage = whoopsPage;
+module.exports.getToken = getToken;
