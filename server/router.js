@@ -1,7 +1,7 @@
 const controllers = require('./controllers');
 const mid = require('./middleware');
 
-//maybe change this for about and 404 pages as well
+// maybe change this for about and 404 pages as well
 const router = (app) => {
   // gets login page
   app.get('/login', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
@@ -29,10 +29,10 @@ const router = (app) => {
   app.get('/', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
   // gets 404 handler page when a nonexistent item is requested
   app.get('/*', mid.requiresSecure, controllers.Account.whoopsPage);
-  //added for react
-  //gets token
+  // added for react
+  // gets token
   app.get('/getToken', mid.requiresSecure, controllers.Account.getToken);
-  //getMeal by account id
+  // getMeal by account id
   app.get('/getMeals', mid.requiresLogin, controllers.Meal.getMeal);
 };
 

@@ -152,7 +152,7 @@ const changePass = (request, response) => {
   });
 };
 
-//added  for react
+// added  for react
 const getToken = (request, response) => {
   const req = request;
   const res = response;
@@ -168,7 +168,7 @@ const getToken = (request, response) => {
 module.exports.loginPage = loginPage;
 module.exports.login = login;
 module.exports.logout = logout;
-module.exports.signupPage = signupPage;
+// module.exports.signupPage = signupPage;
 module.exports.signup = signup;
 module.exports.aboutPage = aboutPage;
 module.exports.changePassPage = changePassPage;

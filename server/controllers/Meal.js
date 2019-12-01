@@ -51,7 +51,7 @@ const makeMeal = (req, res) => {
   return MealPromise;
 };
 
-//find meal by owner
+// find meal by owner
 const getMeal = (request, response) => {
   const req = request;
   const res = response;
