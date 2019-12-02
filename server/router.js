@@ -16,7 +16,8 @@ const router = (app) => {
   // gets about page
   app.get('/about', mid.requiresSecure, controllers.Account.aboutPage);
   // gets change password page
-  // app.get('/changePass', mid.requiresLogin, mid.requiresSecure, controllers.Account.changePassPage);
+  // app.get('/changePass', mid.requiresLogin,
+  // mid.requiresSecure, controllers.Account.changePassPage);
   // sends data to change password
   app.post('/changePass', mid.requiresLogin, mid.requiresSecure, controllers.Account.changePass);
   // gets main app page to make meals
