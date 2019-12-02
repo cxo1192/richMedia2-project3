@@ -147,7 +147,7 @@ var ChangePassWindow = function ChangePassWindow(props) {
         ),
         React.createElement("input", { id: "newPass", type: "password", name: "newPass", placeholder: "new password" }),
         React.createElement("input", { type: "hidden", name: "_csrf", value: props.csrf }),
-        React.createElement("input", { className: "formSubmit", type: "submit", value: "Change Password" })
+        React.createElement("input", { id: "changePassSubmit", className: "formSubmit", type: "submit", value: "Change Password" })
     );
 };
 
