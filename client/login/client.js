@@ -47,10 +47,10 @@ const handleChangePass = (e) => {
         return false;
     }
 
-    if($("#pass").val() == '' || $("#pass2").val() == ''){
-        handleError("Passwords do not match");
-        return false;
-    }
+    // if($("#pass").val() == '' || $("#pass2").val() == ''){
+    //     handleError("Passwords do not match");
+    //     return false;
+    // }
 
     sendAjax('POST', $("#changePassForm").attr("action"), $("#changePassForm").serialize(), redirect);
 

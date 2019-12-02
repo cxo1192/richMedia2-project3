@@ -16,7 +16,7 @@ const router = (app) => {
   // gets about page
   app.get('/about', mid.requiresSecure, controllers.Account.aboutPage);
   // gets change password page
-  app.get('/changePass', mid.requiresLogin, mid.requiresSecure, controllers.Account.changePassPage);
+  // app.get('/changePass', mid.requiresLogin, mid.requiresSecure, controllers.Account.changePassPage);
   // sends data to change password
   app.post('/changePass', mid.requiresLogin, mid.requiresSecure, controllers.Account.changePass);
   // gets main app page to make meals
@@ -28,7 +28,7 @@ const router = (app) => {
   // gets login page when page is not specified
   app.get('/', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
   // gets 404 handler page when a nonexistent item is requested
-  app.get('/*', mid.requiresSecure, controllers.Account.whoopsPage);
+  // app.get('/*', mid.requiresSecure, controllers.Account.whoopsPage);
   // added for react
   // gets token
   app.get('/getToken', mid.requiresSecure, controllers.Account.getToken);
