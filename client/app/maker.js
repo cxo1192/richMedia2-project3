@@ -22,7 +22,7 @@ const handleRemoveMeal = (e) => {
 
     $("#ronMessage").animate({width:'hide'},350);
 
-    if($("#mealName").val() == '') { 
+    if($("#removeMealName").val() == '') { 
         handleError("All fields are required");
         return false;
     }
@@ -77,7 +77,7 @@ const RemoveMealForm = (props) => {
             <label id="removeMealNameLabel" for="removeName">Meal Name To Remove: </label>
             <input id="removeMealName" type="text" name="removeName" placeholder="Meal Name"/>
             <input type="hidden" name="_csrf" value={props.csrf} />
-            <input className="makeDomoSubmit" type="submit" value="Make Domo" />
+            <input className="makeMealSubmit" type="submit" value="Remove" />
         </form>
     );
 };
@@ -117,22 +117,31 @@ const MealList = function(props) {
     );
 };
 
-const loadMealsFromServer = () => {
+const loadMealsFromServer = () => { 
     sendAjax('GET', '/getMeals', null, (data) => {
         ReactDOM.render(
-            <MealList meals={data.meals} />, document.querySelector("#meals")
+            <MealList meals={data.meals} />, document.querySelector("#mealsBox")
         );
     });
 };
 
 const setup = function(csrf){
-    ReactDOM.render(
+    ReactDOM.render( //counts
         <MealForm csrf={csrf} />, document.querySelector("#makeMeal")
     );
 
-    ReactDOM.render(
-        <MealList meals={[]} />, document.querySelector("#meals")
+    ReactDOM.render( //counts
+        <MealList meals={[]} />, document.querySelector("#mealsBox")
     );
+
+    //add one for remove meal //will count and be all 5
+    ReactDOM.render( //counts
+        <RemoveMealForm csrf={csrf} />, document.querySelector("#removeMeal")
+    );
+
+    //potentially add ads here
+
+    //potentially add recomended here
 
     loadMealsFromServer();
 };

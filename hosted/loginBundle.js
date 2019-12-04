@@ -216,12 +216,17 @@ var createChangePassWindow = function createChangePassWindow(csrf) {
 };
 
 var createAboutWindow = function createAboutWindow(csrf) {
+    //counts
     ReactDOM.render(React.createElement(AboutWindow, { csrf: csrf }), document.querySelector("#content"));
 };
 
 var createWhoopsWindow = function createWhoopsWindow(csrf) {
-    ReactDOM.render(React.createElement(WhoopsPassWindow, { csrf: csrf }), document.querySelector("#content"));
+    //counts
+    ReactDOM.render(React.createElement(WhoopsWindow, { csrf: csrf }), document.querySelector("#content"));
 };
+
+//need 3 more
+
 
 var setup = function setup(csrf) {
     var loginButton = document.querySelector("#loginButton");
@@ -254,7 +259,12 @@ var setup = function setup(csrf) {
         return false;
     });
 
-    createLoginWindow(csrf); //default view
+    console.log(window.location.pathname);
+    if (window.location.pathname != '/login') {
+        createWhoopsWindow(csrf);
+    } else {
+        createLoginWindow(csrf); //default view
+    }
 };
 
 var getToken = function getToken() {
