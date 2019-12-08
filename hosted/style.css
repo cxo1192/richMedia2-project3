@@ -263,7 +263,7 @@ nav:nth-child(1) {
     margin-top: 200px;
 }
 
-.meal {
+.meal{
     width: 95%;
     margin: 0 auto;
     margin-top: 2px;
@@ -275,6 +275,26 @@ nav:nth-child(1) {
     min-height:60px;
     overflow: hidden;
     font-family: 'Bree Serif', serif;
+}
+
+.total{
+    text-align: center;
+    font-size: 2.5em;
+    width: 35%;
+    margin: 0 auto;
+    margin-top: 2px;
+    margin-bottom: 10px;
+    border: 4px solid white;
+    border-radius: 4px;
+    background-color: #4FB477;
+    padding: 20px;
+    min-height:60px;
+    overflow: hidden;
+    font-family: 'Bree Serif', serif;
+}
+
+.total p{
+    font-size: 0.75em;
 }
 
 .meal:hover {
@@ -314,13 +334,16 @@ h3.mealName {
     font-weight: bold;
     padding-left: 65px;
     margin-left: 20px;
-    margin-top: 50px;
-    font-size: 3em;
+    margin-top: 60px;
+    margin-right: 600px;
+    font-size: 4.5em;
 }
 
+/* h3.calories, h3.protien, h3.carbs, h3.fat, h3.sodium, h3.cholesterol,  */
 .mealFacts{
     float: right;
-    margin-right: 140px;
+    /* margin-left: 400px; */
+    /* margin-right: 0px; */
 }
 
 #aboutInfo{
@@ -371,6 +394,7 @@ h3.mealName {
 #listWrap{
     width:95%;
     font-family: 'Bree Serif', serif;
+    font-size: 1.25em;
 }
 
 #femaleList{

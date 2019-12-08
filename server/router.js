@@ -30,7 +30,7 @@ const router = (app) => {
   // gets login page when page is not specified
   app.get('/', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
   // gets 404 handler page when a nonexistent item is requested
-   
+
   // added for react
   // gets token
   app.get('/getToken', mid.requiresSecure, controllers.Account.getToken);

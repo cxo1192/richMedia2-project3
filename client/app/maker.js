@@ -44,19 +44,19 @@ const MealForm = (props) => {
             method="POST"
             className="mealForm"
         >
-            <label for="name">Name: </label>
+            <label htmlFor="name">Name: </label>
             <input id="mealName" type="text" name="name" placeholder="Meal Name"/>
-            <label for="calories">Calories: </label>
+            <label htmlFor="calories">Calories: </label>
             <input id="mealCalories" type="text" name="calories" placeholder="Meal Calories"/> 
-            <label for="protien">Protien: </label>
+            <label htmlFor="protien">Protien: </label>
             <input id="mealProtien" type="text" name="protien" placeholder="Meal Protien"/> 
-            <label for="carbs">Carbs: </label>
+            <label htmlFor="carbs">Carbs: </label>
             <input id="mealCarbs" type="text" name="carbs" placeholder="Meal Carbs"/> 
-            <label for="fat">Fat: </label>
+            <label htmlFor="fat">Fat: </label>
             <input id="mealfat" type="text" name="fat" placeholder="Meal Fat"/> 
-            <label for="sodium">Sodium: </label>
+            <label htmlFor="sodium">Sodium: </label>
             <input id="mealSodium" type="text" name="sodium" placeholder="Meal Sodium"/> 
-            <label for="Cholesterol">Chol: </label>
+            <label htmlFor="Cholesterol">Chol: </label>
             <input id="mealCholesterol" type="text" name="cholesterol" placeholder="Meal Cholesterol"/> 
             <input type="hidden" name="_csrf" value={props.csrf} />
             <input className="makeMealSubmit" type="submit" value="Make Meal" />
@@ -74,7 +74,7 @@ const RemoveMealForm = (props) => {
             method="POST"
             className="removeMealForm"
         >
-            <label id="removeMealNameLabel" for="removeName">Meal Name To Remove: </label>
+            <label id="removeMealNameLabel" htmlFor="removeName">Meal Name To Remove: </label>
             <input id="removeMealName" type="text" name="removeName" placeholder="Meal Name"/>
             <input type="hidden" name="_csrf" value={props.csrf} />
             <input className="makeMealSubmit" type="submit" value="Remove" />
@@ -99,20 +99,139 @@ const MealList = function(props) {
         return(
             <div key={meal._id} className="meal">
                 <img src="/assets/img/mealSketch.png" alt="meal img" className="mealImg" />
-                <h3 className="mealName"> Name: {meal.name} </h3>
-                <h3 className="calories"> Calories: {meal.calories} </h3>
-                <h3 className="protien"> Protien: {meal.protien} </h3>
-                <h3 className="carbs"> Carbs: {meal.carbs} </h3>
-                <h3 className="fat"> Fat: {meal.fat} </h3>
-                <h3 className="sodium"> Sodium: {meal.sodium} </h3>
-                <h3 className="cholesterol"> Cholesterol: {meal.cholesterol} </h3>
+                <div id='mealFacts'>
+                    <h3 className="mealName"> Name: {meal.name} </h3>
+                    <h3 className="calories"> Calories: {meal.calories} </h3>
+                    <h3 className="protien"> Protein: {meal.protien} </h3>
+                    <h3 className="carbs"> Carbs: {meal.carbs} </h3>
+                    <h3 className="fat"> Fat: {meal.fat} </h3>
+                    <h3 className="sodium"> Sodium: {meal.sodium} </h3>
+                    <h3 className="cholesterol"> Cholesterol: {meal.cholesterol} </h3>
+                </div>
             </div>
         );
     });
 
+    let totalCal = 0;
+    props.meals.map(function(meal){
+        totalCal += meal.calories;
+    });
+    
+    if(totalCal < 2000 || totalCal > 3200){
+        if(totalCal < 1600){
+            document.getElementById('fC').style.color = 'blue';
+            document.getElementById('mC').style.color = 'blue';
+        }else if(totalCal < 1800){
+            document.getElementById('mC').style.color = 'blue';
+            document.getElementById('fC').style.color = 'black';
+        }else if(totalCal > 1800){
+            document.getElementById('fC').style.color = 'red';
+            if(totalCal > 3200){
+                document.getElementById('mC').style.color = 'red';
+            }
+            else if(totalCal < 2000){
+                document.getElementById('mC').style.color = 'blue';
+            }
+        }
+    }else{
+        document.getElementById('mC').style.color = 'black';
+        document.getElementById('fC').style.color = 'red';
+    }
 
+    let totalPro = 0;
+    props.meals.map(function(meal){
+        totalPro += meal.protien;
+    });
+
+    if(totalPro < 52 || totalPro > 56){
+        if(totalPro > 46 && totalPro < 52){
+            document.getElementById('mP').style.color = 'blue';
+            document.getElementById('fP').style.color = 'black';
+        }else if(totalPro > 56){
+            document.getElementById('fP').style.color = 'red';
+            document.getElementById('mP').style.color = 'red';
+        }else if(totalPro < 46){
+            document.getElementById('fP').style.color = 'blue';
+            document.getElementById('mP').style.color = 'blue';
+        }
+    }else{
+        document.getElementById('fP').style.color = 'black';
+        document.getElementById('mP').style.color = 'black';
+    }
+
+    let totalCar = 0;
+    props.meals.map(function(meal){
+        totalCar += meal.carbs;
+    });
+
+    if(totalCar < 130){
+        document.getElementById('fCa').style.color = 'blue';
+        document.getElementById('mCa').style.color = 'blue';
+    }else if(totalCar > 130){
+        document.getElementById('fCa').style.color = 'red';
+        document.getElementById('mCa').style.color = 'red';
+    }else{
+        document.getElementById('fCa').style.color = 'black';
+        document.getElementById('mCa').style.color = 'black';
+    }
+
+    let totalFat = 0;
+    props.meals.map(function(meal){
+        totalFat += meal.fat;
+    });
+
+    if(totalFat < 20){
+        document.getElementById('fF').style.color = 'blue';
+        document.getElementById('mF').style.color = 'blue';
+    }else if(totalFat > 35){
+        document.getElementById('fF').style.color = 'red';
+        document.getElementById('mF').style.color = 'red';
+    }else{
+        document.getElementById('fF').style.color = 'black';
+        document.getElementById('mF').style.color = 'black';
+    }
+
+    let totalSo = 0;
+    props.meals.map(function(meal){
+        totalSo += meal.sodium;
+    });
+
+    if(totalSo < 2300){
+        document.getElementById('fS').style.color = 'blue';
+        document.getElementById('mS').style.color = 'blue';
+    }else if(totalSo > 2300){
+        document.getElementById('fS').style.color = 'red';
+        document.getElementById('mS').style.color = 'red';
+    }else{
+        document.getElementById('fS').style.color = 'black';
+        document.getElementById('mS').style.color = 'black';
+    }
+
+    let totalCho = 0;
+    props.meals.map(function(meal){
+        totalCho += meal.cholesterol;
+    });
+
+    if(totalCho < 200){
+        document.getElementById('fCh').style.color = 'black';
+        document.getElementById('mCh').style.color = 'black';
+    }else{
+        document.getElementById('fCh').style.color = 'red';
+        document.getElementById('mCh').style.color = 'red';
+    }
+    
+    
     return(
         <div className="mealList">
+            <div className="total">
+                Your Totals 
+                <p id='tCl'>Calories: {totalCal}</p> 
+                <p id='tP'>Protein: {totalPro}</p> 
+                <p id='tCb'>Carbs: {totalCar}</p>
+                <p id='tF'>Fat: {totalFat}</p>
+                <p id='tS'>Sodium: {totalSo}</p>
+                <p id='tCh'>Cholesterol: {totalCho}</p>
+            </div>
             {mealNodes}
         </div>
     );
@@ -145,6 +264,13 @@ const setup = function(csrf){
     //potentially add recomended here
 
     loadMealsFromServer();
+    
+    // var x = document.getElementsByClassName("calories");
+    // var i;
+    // console.log(x.length);
+    // for(i = 0; i < x.length; i++) {
+    //     console.log("calories");
+    // }
 };
 
 const getToken = () => {

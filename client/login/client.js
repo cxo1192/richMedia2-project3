@@ -148,7 +148,7 @@ const WhoopsWindow = (props) => {
             <h1>Whoops!</h1>
             <p>
                 The page you were looking for does not exist.
-                Feel free to navigate using the nav-bar above to access the content that is available.
+                Feel free to navigate to the home page to access the available content.
                 Sorry for the inconvenience. 
             </p>
         </div>
@@ -225,7 +225,7 @@ const setup = (csrf) => {
     });    
 
     console.log(window.location.pathname);
-    if(window.location.pathname != '/login'){
+    if(window.location.pathname != '/login' && window.location.pathname != '/'){
         createWhoopsWindow(csrf);
     }else{
         createLoginWindow(csrf); //default view
