@@ -24,7 +24,7 @@ var handleRemoveMeal = function handleRemoveMeal(e) {
 
     $("#ronMessage").animate({ width: 'hide' }, 350);
 
-    if ($("#mealName").val() == '') {
+    if ($("#removeMealName").val() == '') {
         handleError("All fields are required");
         return false;
     }
@@ -110,7 +110,7 @@ var RemoveMealForm = function RemoveMealForm(props) {
         ),
         React.createElement("input", { id: "removeMealName", type: "text", name: "removeName", placeholder: "Meal Name" }),
         React.createElement("input", { type: "hidden", name: "_csrf", value: props.csrf }),
-        React.createElement("input", { className: "makeDomoSubmit", type: "submit", value: "Make Domo" })
+        React.createElement("input", { className: "makeMealSubmit", type: "submit", value: "Remove" })
     );
 };
 
@@ -196,14 +196,24 @@ var MealList = function MealList(props) {
 
 var loadMealsFromServer = function loadMealsFromServer() {
     sendAjax('GET', '/getMeals', null, function (data) {
-        ReactDOM.render(React.createElement(MealList, { meals: data.meals }), document.querySelector("#meals"));
+        ReactDOM.render(React.createElement(MealList, { meals: data.meals }), document.querySelector("#mealsBox"));
     });
 };
 
 var setup = function setup(csrf) {
-    ReactDOM.render(React.createElement(MealForm, { csrf: csrf }), document.querySelector("#makeMeal"));
+    ReactDOM.render( //counts
+    React.createElement(MealForm, { csrf: csrf }), document.querySelector("#makeMeal"));
 
-    ReactDOM.render(React.createElement(MealList, { meals: [] }), document.querySelector("#meals"));
+    ReactDOM.render( //counts
+    React.createElement(MealList, { meals: [] }), document.querySelector("#mealsBox"));
+
+    //add one for remove meal //will count and be all 5
+    ReactDOM.render( //counts
+    React.createElement(RemoveMealForm, { csrf: csrf }), document.querySelector("#removeMeal"));
+
+    //potentially add ads here
+
+    //potentially add recomended here
 
     loadMealsFromServer();
 };

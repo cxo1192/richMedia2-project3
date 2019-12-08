@@ -176,19 +176,21 @@ const createChangePassWindow = (csrf) => {
     );
 };
 
-const createAboutWindow = (csrf) => {
+const createAboutWindow = (csrf) => { //counts
     ReactDOM.render(
         <AboutWindow csrf={csrf} />,
         document.querySelector("#content")
     );
 };
 
-const createWhoopsWindow = (csrf) => {
+const createWhoopsWindow = (csrf) => { //counts
     ReactDOM.render(
-        <WhoopsPassWindow csrf={csrf} />,
+        <WhoopsWindow csrf={csrf} />,
         document.querySelector("#content")
     );
 };
+
+//need 3 more
 
 
 const setup = (csrf) => {
@@ -222,7 +224,14 @@ const setup = (csrf) => {
         return false;
     });    
 
-    createLoginWindow(csrf); //default view
+    console.log(window.location.pathname);
+    if(window.location.pathname != '/login'){
+        createWhoopsWindow(csrf);
+    }else{
+        createLoginWindow(csrf); //default view
+    }
+
+   
 };
 
 
