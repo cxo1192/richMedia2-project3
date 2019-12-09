@@ -1,3 +1,5 @@
+//helper functions that handle errors redirects and sending data
+
 const handleError = (message) => {
     $("#errorMessage").text(message);
     $("#ronMessage").animate({width:'toggle'},350);

@@ -1,3 +1,4 @@
+//checks data input and then sends login request
 const handleLogin = e => {
     e.preventDefault();
 
@@ -15,6 +16,7 @@ const handleLogin = e => {
     return false;
 };
 
+//checks entered data and then sends signup request
 const handleSignup = (e) => {
     e.preventDefault();
 
@@ -36,7 +38,7 @@ const handleSignup = (e) => {
 };
 
 
-//handle change passs here
+//handle change password here
 const handleChangePass = (e) => {
     e.preventDefault();
 
@@ -47,18 +49,13 @@ const handleChangePass = (e) => {
         return false;
     }
 
-    // if($("#pass").val() == '' || $("#pass2").val() == ''){
-    //     handleError("Passwords do not match");
-    //     return false;
-    // }
-
     sendAjax('POST', $("#changePassForm").attr("action"), $("#changePassForm").serialize(), redirect);
 
     return false;
 };
 
 
-
+//react login window
 const LoginWindow = (props) => {
     return(
         <form id="loginForm" name="loginForm"
@@ -77,7 +74,7 @@ const LoginWindow = (props) => {
     );
 };
 
-
+//react signup window
 const SignupWindow = (props) => {
     return(
         <form id="signupForm" 
@@ -135,6 +132,10 @@ const AboutWindow = (props) => {
                 The app provides the daily recommended values you should be consuming. 
                 You can then compare what you have eaten with these values and discover what you need to cut out and what you need to add to your diet.
                 You can then start fresh each day by removing the meals with the press of a button and starting fresh.
+                Additionally the app will calculate your total nutrition facts by compiling all the data from all of your entered meals for the day. 
+                Not only that but the app will also display when the user is over, under, or on target for the day. 
+                Each measure of nutrition is color coded both for males and females to indicate if you need more protein, less carbs, or the same about of calories etc. 
+                Nutrition facts labeled in black are on target, those labeled in blue are under target, and those labeled in red are over target.
             </p>
             <p id="sources"> The recomended daily nutrition values are obtained from <a href="https://health.gov/dietaryguidelines/2015/guidelines/appendix-7/">Health.gov</a>  and <a href="https://www.medicalnewstoday.com/articles/315900.php#recommended-levels">Medical News Today</a></p>
         </div>
@@ -155,6 +156,7 @@ const WhoopsWindow = (props) => {
     );
 };
 
+//functions to generate the various react windows when event listeners are triggered
 const createLoginWindow = (csrf) => {
     ReactDOM.render(
         <LoginWindow csrf={csrf} />,
@@ -190,16 +192,17 @@ const createWhoopsWindow = (csrf) => { //counts
     );
 };
 
-//need 3 more
+//3 more reactDom.render in maker.js
 
 
+//sets up initial page for react to load in
 const setup = (csrf) => {
     const loginButton = document.querySelector("#loginButton");
     const signupButton = document.querySelector("#signupButton");
     const changePassButton = document.querySelector("#changePassButton");
     const aboutButton = document.querySelector("#aboutButton");
-    //find some way to make whoops window
 
+    //event listeners to create the appropriate windows when the buttons are clicked
     signupButton.addEventListener("click", (e) => {
         e.preventDefault();
         createSignupWindow(csrf);
@@ -224,9 +227,10 @@ const setup = (csrf) => {
         return false;
     });    
 
-    console.log(window.location.pathname);
+    //console.log(window.location.pathname);
+    //goes to login page if page is nuetrally loaded or to a 404 page if a page that does not exist is requested
     if(window.location.pathname != '/login' && window.location.pathname != '/'){
-        createWhoopsWindow(csrf);
+        createWhoopsWindow(csrf); //404 page
     }else{
         createLoginWindow(csrf); //default view
     }

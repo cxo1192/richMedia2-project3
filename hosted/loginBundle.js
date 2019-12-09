@@ -1,5 +1,6 @@
 "use strict";
 
+//checks data input and then sends login request
 var handleLogin = function handleLogin(e) {
     e.preventDefault();
 
@@ -17,6 +18,7 @@ var handleLogin = function handleLogin(e) {
     return false;
 };
 
+//checks entered data and then sends signup request
 var handleSignup = function handleSignup(e) {
     e.preventDefault();
 
@@ -37,7 +39,7 @@ var handleSignup = function handleSignup(e) {
     return false;
 };
 
-//handle change passs here
+//handle change password here
 var handleChangePass = function handleChangePass(e) {
     e.preventDefault();
 
@@ -48,16 +50,12 @@ var handleChangePass = function handleChangePass(e) {
         return false;
     }
 
-    // if($("#pass").val() == '' || $("#pass2").val() == ''){
-    //     handleError("Passwords do not match");
-    //     return false;
-    // }
-
     sendAjax('POST', $("#changePassForm").attr("action"), $("#changePassForm").serialize(), redirect);
 
     return false;
 };
 
+//react login window
 var LoginWindow = function LoginWindow(props) {
     return React.createElement(
         "form",
@@ -84,6 +82,7 @@ var LoginWindow = function LoginWindow(props) {
     );
 };
 
+//react signup window
 var SignupWindow = function SignupWindow(props) {
     return React.createElement(
         "form",
@@ -164,7 +163,7 @@ var AboutWindow = function AboutWindow(props) {
         React.createElement(
             "p",
             null,
-            "Meal Maker is a simple yet effective web-based meal tracker app. Here you can make an account to store all the data about your daily diet. You can enter various information such as calories and protein into the app and create individual meals. The app provides the daily recommended values you should be consuming. You can then compare what you have eaten with these values and discover what you need to cut out and what you need to add to your diet. You can then start fresh each day by removing the meals with the press of a button and starting fresh."
+            "Meal Maker is a simple yet effective web-based meal tracker app. Here you can make an account to store all the data about your daily diet. You can enter various information such as calories and protein into the app and create individual meals. The app provides the daily recommended values you should be consuming. You can then compare what you have eaten with these values and discover what you need to cut out and what you need to add to your diet. You can then start fresh each day by removing the meals with the press of a button and starting fresh. Additionally the app will calculate your total nutrition facts by compiling all the data from all of your entered meals for the day. Not only that but the app will also display when the user is over, under, or on target for the day. Each measure of nutrition is color coded both for males and females to indicate if you need more protein, less carbs, or the same about of calories etc. Nutrition facts labeled in black are on target, those labeled in blue are under target, and those labeled in red are over target."
         ),
         React.createElement(
             "p",
@@ -203,6 +202,7 @@ var WhoopsWindow = function WhoopsWindow(props) {
     );
 };
 
+//functions to generate the various react windows when event listeners are triggered
 var createLoginWindow = function createLoginWindow(csrf) {
     ReactDOM.render(React.createElement(LoginWindow, { csrf: csrf }), document.querySelector("#content"));
 };
@@ -225,16 +225,17 @@ var createWhoopsWindow = function createWhoopsWindow(csrf) {
     ReactDOM.render(React.createElement(WhoopsWindow, { csrf: csrf }), document.querySelector("#content"));
 };
 
-//need 3 more
+//3 more reactDom.render in maker.js
 
 
+//sets up initial page for react to load in
 var setup = function setup(csrf) {
     var loginButton = document.querySelector("#loginButton");
     var signupButton = document.querySelector("#signupButton");
     var changePassButton = document.querySelector("#changePassButton");
     var aboutButton = document.querySelector("#aboutButton");
-    //find some way to make whoops window
 
+    //event listeners to create the appropriate windows when the buttons are clicked
     signupButton.addEventListener("click", function (e) {
         e.preventDefault();
         createSignupWindow(csrf);
@@ -259,9 +260,10 @@ var setup = function setup(csrf) {
         return false;
     });
 
-    console.log(window.location.pathname);
+    //console.log(window.location.pathname);
+    //goes to login page if page is nuetrally loaded or to a 404 page if a page that does not exist is requested
     if (window.location.pathname != '/login' && window.location.pathname != '/') {
-        createWhoopsWindow(csrf);
+        createWhoopsWindow(csrf); //404 page
     } else {
         createLoginWindow(csrf); //default view
     }
@@ -277,6 +279,8 @@ $(document).ready(function () {
     getToken();
 });
 "use strict";
+
+//helper functions that handle errors redirects and sending data
 
 var handleError = function handleError(message) {
     $("#errorMessage").text(message);

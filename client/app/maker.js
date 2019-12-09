@@ -1,3 +1,4 @@
+//evaluates entered data and then sends a make meal request
 const handleMakeMeal = (e) => { 
     e.preventDefault();
 
@@ -16,7 +17,7 @@ const handleMakeMeal = (e) => {
 };
 
 
-//handleRemoveMeal
+//checks data entered and then makes a remove meal request
 const handleRemoveMeal = (e) => { 
     e.preventDefault();
 
@@ -34,7 +35,7 @@ const handleRemoveMeal = (e) => {
     return false;
 };
 
-
+//react component to make a meal
 const MealForm = (props) => { 
     return(
         <form id="mealForm"
@@ -64,7 +65,7 @@ const MealForm = (props) => {
     );
 };
 
-
+//react component to remove a meal
 const RemoveMealForm = (props) => {
     return(
         <form id="removeMealForm"
@@ -83,11 +84,9 @@ const RemoveMealForm = (props) => {
 };
 
 
-//add daily value stuff
-
-
+//react component to display all meals and user total nuitriution facts 
 const MealList = function(props) { 
-    if(props.meals.length === 0){ 
+    if(props.meals.length === 0){ //if no meals
         return(
             <div className="mealList">
                 <h3 className="emptyMeal">No Meals yet</h3>
@@ -95,6 +94,7 @@ const MealList = function(props) {
         );
     }
 
+    //parse each meal
     const mealNodes = props.meals.map(function(meal){
         return(
             <div key={meal._id} className="meal">
@@ -112,11 +112,14 @@ const MealList = function(props) {
         );
     });
 
+
+    //calculates total cal intake for day
     let totalCal = 0;
     props.meals.map(function(meal){
         totalCal += meal.calories;
     });
     
+    //displays weather the user is over under or on target for calorie intake
     if(totalCal < 2000 || totalCal > 3200){
         if(totalCal < 1600){
             document.getElementById('fC').style.color = 'blue';
@@ -138,17 +141,20 @@ const MealList = function(props) {
         document.getElementById('fC').style.color = 'red';
     }
 
+
+    //calc total protien intake
     let totalPro = 0;
     props.meals.map(function(meal){
         totalPro += meal.protien;
     });
 
+    //displays weather the user is over under or on target for protien intake
     if(totalPro < 52 || totalPro > 56){
         if(totalPro > 46 && totalPro < 52){
-            document.getElementById('mP').style.color = 'blue';
-            document.getElementById('fP').style.color = 'black';
+            document.getElementById('mP').style.color = 'blue'; //blue = under taget
+            document.getElementById('fP').style.color = 'black'; //blak = on target
         }else if(totalPro > 56){
-            document.getElementById('fP').style.color = 'red';
+            document.getElementById('fP').style.color = 'red'; //red = over target
             document.getElementById('mP').style.color = 'red';
         }else if(totalPro < 46){
             document.getElementById('fP').style.color = 'blue';
@@ -159,11 +165,13 @@ const MealList = function(props) {
         document.getElementById('mP').style.color = 'black';
     }
 
+    //calc total carb intake
     let totalCar = 0;
     props.meals.map(function(meal){
         totalCar += meal.carbs;
     });
 
+    //displays weather the user is over under or on target for carb intake
     if(totalCar < 130){
         document.getElementById('fCa').style.color = 'blue';
         document.getElementById('mCa').style.color = 'blue';
@@ -175,11 +183,13 @@ const MealList = function(props) {
         document.getElementById('mCa').style.color = 'black';
     }
 
+    //calc total fat intake
     let totalFat = 0;
     props.meals.map(function(meal){
         totalFat += meal.fat;
     });
 
+    //displays weather the user is over under or on target for fat intake
     if(totalFat < 20){
         document.getElementById('fF').style.color = 'blue';
         document.getElementById('mF').style.color = 'blue';
@@ -191,11 +201,13 @@ const MealList = function(props) {
         document.getElementById('mF').style.color = 'black';
     }
 
+    //calc total sodium intake
     let totalSo = 0;
     props.meals.map(function(meal){
         totalSo += meal.sodium;
     });
 
+    //displays weather the user is over under or on target for sodium intake
     if(totalSo < 2300){
         document.getElementById('fS').style.color = 'blue';
         document.getElementById('mS').style.color = 'blue';
@@ -207,11 +219,13 @@ const MealList = function(props) {
         document.getElementById('mS').style.color = 'black';
     }
 
+    //calc total cholesterol intake
     let totalCho = 0;
     props.meals.map(function(meal){
         totalCho += meal.cholesterol;
     });
 
+    //displays weather the user is over under or on target for cholesterol intake
     if(totalCho < 200){
         document.getElementById('fCh').style.color = 'black';
         document.getElementById('mCh').style.color = 'black';
@@ -220,7 +234,7 @@ const MealList = function(props) {
         document.getElementById('mCh').style.color = 'red';
     }
     
-    
+    //display nutrition totals and all meals after parsing
     return(
         <div className="mealList">
             <div className="total">
@@ -237,6 +251,7 @@ const MealList = function(props) {
     );
 };
 
+//loads meals
 const loadMealsFromServer = () => { 
     sendAjax('GET', '/getMeals', null, (data) => {
         ReactDOM.render(
@@ -245,6 +260,8 @@ const loadMealsFromServer = () => {
     });
 };
 
+//sets up 3 react components needed on this page 
+//then loads the data from the server to populate screen
 const setup = function(csrf){
     ReactDOM.render( //counts
         <MealForm csrf={csrf} />, document.querySelector("#makeMeal")
@@ -254,23 +271,11 @@ const setup = function(csrf){
         <MealList meals={[]} />, document.querySelector("#mealsBox")
     );
 
-    //add one for remove meal //will count and be all 5
     ReactDOM.render( //counts
         <RemoveMealForm csrf={csrf} />, document.querySelector("#removeMeal")
     );
 
-    //potentially add ads here
-
-    //potentially add recomended here
-
     loadMealsFromServer();
-    
-    // var x = document.getElementsByClassName("calories");
-    // var i;
-    // console.log(x.length);
-    // for(i = 0; i < x.length; i++) {
-    //     console.log("calories");
-    // }
 };
 
 const getToken = () => {
