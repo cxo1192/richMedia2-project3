@@ -183,7 +183,7 @@ var AboutWindow = function AboutWindow(props) {
         ),
         React.createElement(
             "section",
-            { "class": "ad" },
+            { className: "ad" },
             React.createElement("img", { src: "/assets/img/ad.png", alt: "add 3" })
         )
     );
