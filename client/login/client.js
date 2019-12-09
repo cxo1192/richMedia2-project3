@@ -138,6 +138,7 @@ const AboutWindow = (props) => {
                 Nutrition facts labeled in black are on target, those labeled in blue are under target, and those labeled in red are over target.
             </p>
             <p id="sources"> The recomended daily nutrition values are obtained from <a href="https://health.gov/dietaryguidelines/2015/guidelines/appendix-7/">Health.gov</a>  and <a href="https://www.medicalnewstoday.com/articles/315900.php#recommended-levels">Medical News Today</a></p>
+            <section class="ad"><img src="/assets/img/ad.png" alt="add 3"/></section>
         </div>
     );
 };
@@ -152,6 +153,7 @@ const WhoopsWindow = (props) => {
                 Feel free to navigate to the home page to access the available content.
                 Sorry for the inconvenience. 
             </p>
+            <section id='whoops'><img src="/assets/img/whoops.png" alt="whoopsImg"/></section>
         </div>
     );
 };

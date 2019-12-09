@@ -180,6 +180,11 @@ var AboutWindow = function AboutWindow(props) {
                 { href: "https://www.medicalnewstoday.com/articles/315900.php#recommended-levels" },
                 "Medical News Today"
             )
+        ),
+        React.createElement(
+            "section",
+            { "class": "ad" },
+            React.createElement("img", { src: "/assets/img/ad.png", alt: "add 3" })
         )
     );
 };
@@ -198,6 +203,11 @@ var WhoopsWindow = function WhoopsWindow(props) {
             "p",
             null,
             "The page you were looking for does not exist. Feel free to navigate to the home page to access the available content. Sorry for the inconvenience."
+        ),
+        React.createElement(
+            "section",
+            { id: "whoops" },
+            React.createElement("img", { src: "/assets/img/whoops.png", alt: "whoopsImg" })
         )
     );
 };
